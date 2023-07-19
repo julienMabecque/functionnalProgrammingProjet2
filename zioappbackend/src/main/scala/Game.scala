@@ -9,10 +9,10 @@ object GameDate {
   type GameDate = LocalDate
 
   // Apply method to create a GameDate from a LocalDate
-  def localDateToGameDate(date: LocalDate): GameDate = date
+  def createGameDate(date: LocalDate): GameDate = date
 
   // Unapply method to extract the underlying LocalDate from a GameDate
-  def gameDateToLocalDate(gameDate: GameDate): LocalDate = gameDate
+  def getLocalDate(gameDate: GameDate): LocalDate = gameDate
 
   // Equality for GameDate
   given CanEqual [GameDate, GameDate] = CanEqual.derived
@@ -22,22 +22,18 @@ object GameDate {
 }
 
 // Definition of an opaque type SeasonYear
-object SeasonYears {
 
-  type SeasonYear <: Int = Int
+object SeasonYear {
+  type SeasonYear = Int 
+  // Apply method to create a SeasonYear from an Int
+  def createSeasonYear(year: Int): SeasonYear = year
 
-  object SeasonYear {
-
-    // Apply method to create a SeasonYear from an Int
-    def apply(year: Int): SeasonYear = year
-
-    // Safe method to create a SeasonYear from an Int within a certain range
-    def safe(value: Int): Option[SeasonYear] =
+  // Safe method to create a SeasonYear from an Int within a certain range
+  def getSeasonYear(value: Int): Option[SeasonYear] =
       Option.when(value >= 1876 && value <= LocalDate.now.getYear)(value)
 
-    // Unapply method to extract the underlying Int from a SeasonYear
-    def unapply(seasonYear: SeasonYear): Int = seasonYear
-  }
+  // Unapply method to extract the underlying Int from a SeasonYear
+  def unapply(seasonYear: SeasonYear): Int = seasonYear
 
   // Equality for SeasonYear
   given CanEqual[SeasonYear, SeasonYear] = CanEqual.derived
@@ -109,9 +105,8 @@ object Game {
   // a custom decoder from a tuple
   type Row = (String, Int, Option[Int], String, String)
 
-  extension (g:Game)
-  def toRow: Row =
-  val (d, y, p, h, a) = Game.unapply(g)
+  extension (g:Game) def toRow: Row = 
+    val (d, y, p, h, a) = Game.unapply(g)
   (
     GameDate.unapply(d).toString,
     SeasonYear.unapply(y),

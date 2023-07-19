@@ -1,0 +1,4 @@
+Uri: git:/c%3A/Users/benja/OneDrive/Bureau/M1/Functionnal_Programming/Projet/functionnalProgrammingProjet2/zioappbackend/src/main/Game.scala?%7B%22path%22%3A%22c%3A%5C%5CUsers%5C%5Cbenja%5C%5COneDrive%5C%5CBureau%5C%5CM1%5C%5CFunctionnal_Programming%5C%5CProjet%5C%5CfunctionnalProgrammingProjet2%5C%5Czioappbackend%5C%5Csrc%5C%5Cmain%5C%5CGame.scala%22%2C%22ref%22%3A%22HEAD%22%7D
+
+Error message: Provider "git" not installed
+Error: java.nio.file.FileSystemNotFoundException: Provider "git" not installed
