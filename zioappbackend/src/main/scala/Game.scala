@@ -24,7 +24,7 @@ object GameDate {
 // Definition of an opaque type SeasonYear
 object SeasonYears {
 
-  type SeasonYear <: Int = Int
+  type SeasonYear = Int
 
   object SeasonYear {
 
@@ -111,7 +111,7 @@ object Game {
 
   extension (g:Game)
   def toRow: Row =
-  val (d, y, p, h, a) = Game.unapply(g)
+    val (d, y, p, h, a) = Game.unapply(g)
   (
     GameDate.unapply(d).toString,
     SeasonYear.unapply(y),
