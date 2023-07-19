@@ -9,10 +9,10 @@ object GameDate {
   type GameDate = LocalDate
 
   // Apply method to create a GameDate from a LocalDate
-  def createGameDate(date: LocalDate): GameDate = date
+  def localDateToGameDate(date: LocalDate): GameDate = date
 
   // Unapply method to extract the underlying LocalDate from a GameDate
-  def getLocalDate(gameDate: GameDate): LocalDate = gameDate
+  def gameDateToLocalDate(gameDate: GameDate): LocalDate = gameDate
 
   // Equality for GameDate
   given CanEqual [GameDate, GameDate] = CanEqual.derived
@@ -52,10 +52,10 @@ object HomeTeam {
   type HomeTeam = String
 
   // Apply method to create a HomeTeam from a String
-  def apply(value: String): HomeTeam = value
+  def stringToHomeTeam(value: String): HomeTeam = value
 
   // Unapply method to extract the underlying String from a HomeTeam
-  def unapply(homeTeam: HomeTeam): String = homeTeam
+  def homeTeamToString(homeTeam: HomeTeam): String = homeTeam
 
   // Equality for HomeTeam
   given CanEqual[HomeTeam, HomeTeam] = CanEqual.derived
@@ -69,14 +69,11 @@ object AwayTeams {
 
   type AwayTeam = String
 
-  object AwayTeam {
+  // Apply method to create an AwayTeam from a String
+  def stringToAwayTeam(value: String): AwayTeam = value
 
-    // Apply method to create an AwayTeam from a String
-    def apply(value: String): AwayTeam = value
-
-    // Unapply method to extract the underlying String from an AwayTeam
-    def unapply(awayTeam: AwayTeam): String = awayTeam
-  }
+  // Unapply method to extract the underlying String from an AwayTeam
+  def awayTeamToString(awayTeam: AwayTeam): String = awayTeam
 
   // Equality for AwayTeam
   given CanEqual[AwayTeam, AwayTeam] = CanEqual.derived
@@ -86,10 +83,10 @@ object AwayTeams {
 }
 
 
-import GameDates.*
-import SeasonYears.*
-import HomeTeams.*
-import AwayTeams.*
+import GameDate.*
+import SeasonYear.*
+import HomeTeam.*
+import AwayTeam.*
 
 //game definition
 final case class Game(
